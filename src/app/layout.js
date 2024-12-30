@@ -1,6 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google"; // Ensure Inter is imported
 import "./globals.css";
 import Header from "./components/Header";
+import SessionWrapper from "./components/SessionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,21 +13,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Define `inter` properly in the module scope
+const inter = Inter({
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "Social App",
-  description: "Social App built with Next.js and Tailind CSS",
+  description: "Social App built with Next.js and Tailwind CSS",
 };
 
 export default function RootLayout({ children }) {
   return (
+    <SessionWrapper>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        <Header />
-        
-        {children}
+          <Header />
+          {children}
       </body>
     </html>
+      </SessionWrapper>
   );
 }

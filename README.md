@@ -1,3 +1,3 @@
 -next.js with tailwind install
 -Add Header Component
- 
+-install next auth 
